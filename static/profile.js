@@ -16,11 +16,14 @@ function submitProfile(evt) {
   })
     .then((response) => response.json())
     .then((responseJson) => {
-      document.querySelector("#profiles").innerHTML = `<p>name: ${
-        responseJson.fullname
-      }</p>
-      <p>age: ${responseJson.age}</p>
-      <p>occupation: ${responseJson.occupation}</p>`;
+      document
+        .querySelector("#profiles")
+        .insertAdjacentHTML(
+          "beforeend",
+          `<li>${responseJson.fullname} the ${responseJson.occupation} is ${
+            responseJson.age
+          } years old.</li>`
+        );
     });
 }
 
